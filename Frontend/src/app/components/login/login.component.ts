@@ -20,7 +20,7 @@ export class LoginComponent {
     console.log(res);
 
     if(res != null){
-      if(res.role === 'ROLE_ADMIN'){
+      if(res.role === 'admin'){
         this.router.navigateByUrl('admin-dashboard');
       }
       else{
