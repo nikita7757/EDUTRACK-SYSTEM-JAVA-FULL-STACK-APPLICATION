@@ -1,0 +1,39 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* hides vertical scrollbar */
+}
+
+.dashboard-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* full screen */
+  background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+  padding: 40px 20px;
+  overflow: hidden;
+}
+
+/* Remove duplicate definitions for .content and .dashboard-container */
+
+.image-wrapper {
+  width: 90%;
+  max-width: 800px;        /* image width control */
+  max-height: 400px;       /* keeps it visible */
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0px;
+}
+
+.full-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;     /* show entire image */
+  display: block;
+  margin: 0 ;
+}
+
+.content {
+  max-width: 700px;
+  z-index: 2;
+}

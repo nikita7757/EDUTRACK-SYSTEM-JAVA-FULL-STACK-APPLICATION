@@ -1,0 +1,47 @@
+ <app-admin-menu></app-admin-menu>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div class="page-wrapper">
+  <div class="container my-5">
+    <h2 class="text-center mb-4">All Users</h2>
+
+    <div class="table-responsive shadow-sm rounded">
+      <table class="table table-striped table-hover table-bordered align-middle">
+        <thead class="table-gradient">
+          <tr>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>EMAIL</th>
+            <th>USERNAME</th>
+            <th>PASSWORD</th>
+            <th>ROLE</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of userList">
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.password |hidePassword }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteUser(user.username)">Delete</button>
+              <a class="btn btn-success" [routerLink]="['/edit-user',user.username]" >Edit</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

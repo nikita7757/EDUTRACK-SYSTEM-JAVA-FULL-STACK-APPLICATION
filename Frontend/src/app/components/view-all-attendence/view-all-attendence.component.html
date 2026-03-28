@@ -1,0 +1,106 @@
+<app-admin-menu></app-admin-menu>
+<div class="page-wrapper">
+  <div class="attendance-card">
+    <h1 class="title">Attendance Viewer</h1>
+
+    <!-- Top section: filters + buttons -->
+    <div class="top-bar">
+      <div class="filters">
+        <!-- Faculty dropdown -->
+        <div class="form-field">
+          <label for="faculty">Faculty</label>
+          <select
+            id="faculty"
+            [(ngModel)]="selectedFaculty"
+            class="input"
+          >
+            <option value="" disabled selected>Select faculty</option>
+            <option *ngFor="let faculty of facultyList" [value]="faculty">
+              {{ faculty.firstName +" "+ faculty.lastName }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Subject dropdown -->
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <select
+            id="subject"
+            [(ngModel)]="selectedSubject"
+            class="input"
+          >
+            <option value="" disabled selected>Select subject</option>
+            <option *ngFor="let subject of subjectList" [ngValue]="subject">
+              {{ subject.name }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Date picker -->
+        <div class="form-field">
+          <label for="date">Date</label>
+          <input
+            id="date"
+            type="date"
+            [(ngModel)]="selectedDate"
+            class="input"
+          />
+        </div>
+      </div>
+
+      <!-- Right-side buttons -->
+      <div class="actions">
+        <button class="btn primary" (click)="show()">Show</button>
+        <button class="btn outline" (click)="showAll()">Show All</button>
+      </div>
+    </div>
+
+    <!-- Attendance table -->
+    <div class="table-wrapper">
+      <table class="attendance-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Faculty</th>
+            <th>Subject</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Students</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of attendanceList; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ row.faculty }}</td>
+            <td>{{ row.subject }}</td>
+            <td>{{ row.date | date: 'dd-MM-yyyy' }}</td>
+            <td>{{ row.time }}</td>
+            <td>
+              <button
+                class="btn small"
+                (click)="row.showStudents = !row.showStudents"
+              >
+                {{ row.showStudents ? 'Hide' : 'Show' }}
+              </button>
+
+              <!-- Student names shown after clicking -->
+              <div
+                class="student-list"
+                *ngIf="row.showStudents"
+              >
+                <span *ngFor="let st of row.students; let j = index">
+                  {{ j + 1 }}. {{ st }}<br />
+                </span>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Optional: message if no data -->
+          <tr *ngIf="attendanceList?.length === 0">
+            <td colspan="6" class="no-data">No attendance records found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

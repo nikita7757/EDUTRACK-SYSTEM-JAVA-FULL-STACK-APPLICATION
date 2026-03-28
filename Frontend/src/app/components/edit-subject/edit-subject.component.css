@@ -1,0 +1,40 @@
+/* Full-page gradient background */
+.page-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 40px;
+  background: linear-gradient(135deg, #4f46e5, #ec4899);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* White card container */
+.container {
+  max-width: 420px;
+  width: 100%;
+  background: #ffffff;
+  padding: 30px 24px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* Center heading */
+h2 {
+  text-align: center;
+  margin-bottom: 18px;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+/* Label styling */
+label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Button styling */
+button {
+  width: 100%;
+}

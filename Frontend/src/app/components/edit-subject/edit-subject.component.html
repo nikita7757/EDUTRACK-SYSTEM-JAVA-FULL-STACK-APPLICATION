@@ -1,0 +1,40 @@
+<app-admin-menu></app-admin-menu>
+
+<div class="page-wrapper">
+  <div class="container">
+    <h2>Edit Subject</h2>
+
+    <form #form="ngForm" (ngSubmit)="onUpdateSubject()">
+
+      <!-- ID (read-only) -->
+      <div class="form-group">
+        <label>Subject ID</label>
+        <input
+          type="number"
+          class="form-control"
+          name="id"
+          [(ngModel)]="subject.id"
+          readonly
+        />
+      </div>
+
+      <!-- New Name -->
+      <div class="form-group mt-3">
+        <label>New Subject Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="subject.name"
+          required
+        />
+      </div>
+
+      <!-- Submit -->
+      <button class="btn btn-primary mt-4" type="submit" [disabled]="form.invalid">
+        Update Subject
+      </button>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<app-admin-menu></app-admin-menu>
+
+<div class="page-wrapper">
+  <div class="container my-5">
+    <h2 class="text-center mb-4">All Subjects</h2>
+
+    <div class="table-responsive shadow-sm rounded">
+      <table class="table table-striped table-hover table-bordered align-middle">
+        <thead class="table-gradient">
+          <tr>
+            <th>Subject Id</th>
+            <th>Subject Name</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- show message if empty -->
+          <tr *ngIf="!subjectList || subjectList.length === 0">
+            <td colspan="3" class="text-center">No subjects found.</td>
+          </tr>
+
+          <!-- render subjects -->
+          <tr *ngFor="let subject of subjectList">
+            <td>{{ subject.id }}</td>
+            <td>{{ subject.name }}</td>
+            <td class="text-center">
+              <button class="btn btn-danger btn-sm me-2" (click)="deleteSubject(subject.id)">
+                Delete
+              </button>
+              <a class="btn btn-success btn-sm" [routerLink]="['/edit-subject', subject.id]">
+                Edit
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

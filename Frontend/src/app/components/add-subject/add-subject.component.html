@@ -1,0 +1,33 @@
+<app-admin-menu></app-admin-menu>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subject Form</title>
+</head>
+<body>
+    <div class="form-wrapper">
+  <div class="form-card">
+
+    <h2 class="form-title">Add New Subject</h2>
+
+    <form>
+
+       <!-- Subject Name -->
+      <div class="mb-3">
+        <label for="subjectName" class="form-label">Subject Name</label>
+        <input type="text" id="subjectName" class="form-control" placeholder="Enter subject name" required
+          name="name" [(ngModel)]="subject.name">
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn-submit w-100" (click)="addSubject()">Submit</button>
+
+    </form>
+
+  </div>
+</div>
+
+</body>
+</html>
+
