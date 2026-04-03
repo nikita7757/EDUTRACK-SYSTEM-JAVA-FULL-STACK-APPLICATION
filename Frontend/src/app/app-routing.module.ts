@@ -23,14 +23,15 @@ const routes: Routes = [
     path:'login',
     component:LoginComponent
   },
-   {
+  {
     path:'admin-dashboard',
-    component:AdminDashboardComponent
+    component:AdminDashboardComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path:'faculty-dashboard',
     component:FacultyDashboardComponent,
-     canActivate: [AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path:'add-user',
