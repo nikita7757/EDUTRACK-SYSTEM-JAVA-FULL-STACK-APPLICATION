@@ -1,1 +1,26 @@
-<p>all-students works!</p>
+<app-faculty-menu></app-faculty-menu>
+<table border="1" width="80%" align="center" cellpadding="8">
+  
+  <thead>
+    <tr>
+      <th>Sr No</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let student of students; let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{student.name}}</td>
+      <td>{{student.email}}</td>
+
+      <td>
+        <button (click)="editStudent(student)">Edit</button>
+        <button (click)="deleteStudent(student.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+
+</table>

@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./all-students.component.css']
 })
 export class AllStudentsComponent {
+students:any[] = [];
+
+editStudent(student:any){}
+deleteStudent(id :any){}
+
 
 }

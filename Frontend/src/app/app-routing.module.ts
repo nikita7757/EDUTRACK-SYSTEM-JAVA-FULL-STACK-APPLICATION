@@ -12,6 +12,8 @@ import { AllSubjectsComponent } from './components/all-subjects/all-subjects.com
 import { ViewAllAttendenceComponent } from './components/view-all-attendence/view-all-attendence.component';
 import { EditSubjectComponent } from './components/edit-subject/edit-subject.component';
 import { AuthGuardService  } from './services/auth.guard.service';
+import { AddStudentComponent } from './components/add-student/add-student.component';
+import { AllStudentsComponent } from './components/all-students/all-students.component';
 
 
 const routes: Routes = [
@@ -62,7 +64,15 @@ const routes: Routes = [
   },
   {path: 'view-all-attendence',
     component: ViewAllAttendenceComponent
+  },
+  {
+    path : 'add-student',
+    component: AddStudentComponent
+  },
+  {path: 'all-students',
+    component:AllStudentsComponent
   }
+
 ];
 
 @NgModule({
