@@ -17,7 +17,7 @@
       <td>{{student.email}}</td>
 
       <td>
-        <button (click)="editStudent(student)">Edit</button>
+       <button [routerLink]="['/edit-student', student.id]">Edit</button>
         <button (click)="deleteStudent(student.id)">Delete</button>
       </td>
     </tr>

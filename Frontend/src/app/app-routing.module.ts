@@ -14,6 +14,7 @@ import { EditSubjectComponent } from './components/edit-subject/edit-subject.com
 import { AuthGuardService  } from './services/auth.guard.service';
 import { AddStudentComponent } from './components/add-student/add-student.component';
 import { AllStudentsComponent } from './components/all-students/all-students.component';
+import { EditStudentComponent } from './components/edit-student/edit-student.component';
 
 
 const routes: Routes = [
@@ -71,7 +72,14 @@ const routes: Routes = [
   },
   {path: 'all-students',
     component:AllStudentsComponent
-  }
+  },
+  {
+    path : 'edit-student',
+    component:EditStudentComponent
+  },
+   { path: 'edit-student/:id', 
+    component: EditStudentComponent
+   }
 
 ];
 
