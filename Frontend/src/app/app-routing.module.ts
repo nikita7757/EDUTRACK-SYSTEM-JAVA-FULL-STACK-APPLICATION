@@ -9,12 +9,12 @@ import { AllUserComponent } from './components/all-user/all-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { AddSubjectComponent } from './components/add-subject/add-subject.component';
 import { AllSubjectsComponent } from './components/all-subjects/all-subjects.component';
-import { ViewAllAttendenceComponent } from './components/view-all-attendence/view-all-attendence.component';
 import { EditSubjectComponent } from './components/edit-subject/edit-subject.component';
 import { AuthGuardService  } from './services/auth.guard.service';
 import { AddStudentComponent } from './components/add-student/add-student.component';
 import { AllStudentsComponent } from './components/all-students/all-students.component';
 import { EditStudentComponent } from './components/edit-student/edit-student.component';
+import { TakeAttendanceComponent } from './components/take-attendance/take-attendance.component';
 
 
 const routes: Routes = [
@@ -59,13 +59,7 @@ const routes: Routes = [
   { path: 'edit-subject/:id',
     component: EditSubjectComponent
   },
-  {
-    path: 'view-attendence',
-    component: ViewAllAttendenceComponent
-  },
-  {path: 'view-all-attendence',
-    component: ViewAllAttendenceComponent
-  },
+ 
   {
     path : 'add-student',
     component: AddStudentComponent
@@ -79,6 +73,10 @@ const routes: Routes = [
   },
    { path: 'edit-student/:id', 
     component: EditStudentComponent
+   },
+   
+   {path : 'take-attendance',
+    component: TakeAttendanceComponent
    }
 
 ];

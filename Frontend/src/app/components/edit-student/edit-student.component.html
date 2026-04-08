@@ -1,1 +1,41 @@
-<p>edit-student works!</p>
+<app-faculty-menu></app-faculty-menu>
+
+<div class="page-wrapper">
+  <div class="container">
+
+    <h2>Edit Student</h2>
+
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+
+    
+
+      <div class="form-group mt-3">
+        <label>Student Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="student.name"
+          required
+        />
+      </div>
+
+      <div class="form-group mt-3">
+        <label>Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="student.email"
+          required
+        />
+      </div>
+
+      <button class="btn btn-primary mt-4" type="submit" [disabled]="form.invalid">
+        Update Student
+      </button>
+
+    </form>
+
+  </div>
+</div>

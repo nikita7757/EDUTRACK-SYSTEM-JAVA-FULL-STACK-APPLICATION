@@ -1,0 +1,96 @@
+<app-faculty-menu></app-faculty-menu>
+
+<app-admin-menu></app-admin-menu>
+
+<div class="page-wrapper">
+  <div class="container">
+
+    <h2>Take Attendance</h2>
+
+    <form #attendanceForm="ngForm" (ngSubmit)="submitAttendance()">
+
+      <!-- Subject -->
+      <div class="form-group">
+        <label>Select Subject</label>
+        <select
+          class="form-control"
+          name="subject"
+          [(ngModel)]="attendance.subjectId"
+          required>
+
+          <option value="">Select Subject</option>
+          <option *ngFor="let sub of subjects" [value]="sub.id">
+            {{sub.name}}
+          </option>
+
+        </select>
+      </div>
+
+      <!-- Date -->
+      <div class="form-group mt-3">
+        <label>Date</label>
+        <input
+          type="date"
+          class="form-control"
+          name="date"
+          [(ngModel)]="attendance.date"
+          required>
+      </div>
+
+      <!-- Time -->
+      <div class="form-group mt-3">
+        <label>Time</label>
+        <input
+          type="time"
+          class="form-control"
+          name="time"
+          [(ngModel)]="attendance.time"
+          required>
+      </div>
+
+      <!-- Student List -->
+      <div class="mt-4">
+
+        <h4>Students</h4>
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Present</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let student of students">
+
+              <td>{{student.name}}</td>
+
+              <td>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="student.present"
+                  name="present{{student.id}}">
+              </td>
+
+            </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        class="btn btn-primary mt-3"
+        type="submit"
+        [disabled]="attendanceForm.invalid">
+
+        Submit Attendance
+
+      </button>
+
+    </form>
+
+  </div>
+</div>

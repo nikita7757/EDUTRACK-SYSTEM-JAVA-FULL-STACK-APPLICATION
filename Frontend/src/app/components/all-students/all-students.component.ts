@@ -33,7 +33,20 @@ editStudent(student: any) {
 }
 
 
-deleteStudent(id :any){}
+deleteStudent(id :any){
+   if(confirm("Are you sure you want to delete this student?")){
+
+    this.studentService.deleteStudentById(id).subscribe(() => {
+
+      alert("Student deleted successfully");
+
+      // reload student list
+      this.getAllStudents();
+
+    });
+
+  }
+}
 
 
 }

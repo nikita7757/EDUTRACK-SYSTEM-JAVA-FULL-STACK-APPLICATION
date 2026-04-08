@@ -1,11 +1,11 @@
-import { SubjectService } from './../../services/subject.service';
-import { FacultyService } from './../../services/faculty.service';
+import { SubjectService } from '../../services/subject.service';
+import { FacultyService } from '../../services/faculty.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-view-all-attendence',
-  templateUrl: './view-all-attendence.component.html',
-  styleUrls: ['./view-all-attendence.component.css']
+  selector: 'app-view-all-attendance',
+  templateUrl: './view-all-attendance.component.html',
+  styleUrls: ['./view-all-attendance.component.css']
 })
 export class ViewAllAttendenceComponent implements OnInit {
 

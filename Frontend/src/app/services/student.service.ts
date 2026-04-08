@@ -25,4 +25,13 @@ export class StudentService {
       const apiUrl = "http://localhost:8091/student/update-student";
       return this.http.put(apiUrl,student); 
     }
+
+    getStudentById(id:any):Observable<any>{
+      const apiUrl = `http://localhost:8091/student/get-student-by-id/${id}`;
+      return this.http.get(apiUrl);
+    }
+    deleteStudentById(id:any):Observable<any>{
+      const apiUrl = `http://localhost:8091/student/delete-student/${id}`;
+      return this.http.delete(apiUrl,{ responseType: 'text' });
+    }
 }
