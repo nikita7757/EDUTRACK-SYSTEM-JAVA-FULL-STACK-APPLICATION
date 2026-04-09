@@ -58,6 +58,7 @@ public class AttendanceController {
 		List<Student> students = studentService.getAllStudentsById(request.getStudentIds());
 
 		AttendanceRecord attendanceRecord = new AttendanceRecord();
+		
 		attendanceRecord.setUser(user);
 		attendanceRecord.setSubject(subject);
 		attendanceRecord.setDate(request.getDate());
