@@ -1,6 +1,6 @@
 <app-faculty-menu></app-faculty-menu>
 
-<app-admin-menu></app-admin-menu>
+
 
 <div class="page-wrapper">
   <div class="container">
@@ -8,45 +8,49 @@
     <h2>Take Attendance</h2>
 
     <form #attendanceForm="ngForm" (ngSubmit)="submitAttendance()">
+<div class="row">
 
-      <!-- Subject -->
-      <div class="form-group">
-        <label>Select Subject</label>
-        <select
-          class="form-control"
-          name="subject"
-          [(ngModel)]="attendance.subjectId"
-          required>
+  <!-- Subject -->
+  <div class="col-md-4">
+    <label>Select Subject</label>
+    <select
+      class="form-control"
+      name="subject"
+      [(ngModel)]="attendance.subjectId"
+      required>
 
-          <option value="">Select Subject</option>
-          <option *ngFor="let sub of subjects" [value]="sub.id">
-            {{sub.name}}
-          </option>
+      <option value="">Select Subject</option>
+      <option *ngFor="let sub of subjects" [value]="sub.id">
+        {{sub.name}}
+      </option>
 
-        </select>
-      </div>
+    </select>
+  </div>
 
-      <!-- Date -->
-      <div class="form-group mt-3">
-        <label>Date</label>
-        <input
-          type="date"
-          class="form-control"
-          name="date"
-          [(ngModel)]="attendance.date"
-          required>
-      </div>
+  <!-- Date -->
+  <div class="col-md-4">
+    <label>Date</label>
+    <input
+      type="date"
+      class="form-control"
+      name="date"
+      [(ngModel)]="attendance.date"
+      required>
+  </div>
 
-      <!-- Time -->
-      <div class="form-group mt-3">
-        <label>Time</label>
-        <input
-          type="time"
-          class="form-control"
-          name="time"
-          [(ngModel)]="attendance.time"
-          required>
-      </div>
+  <!-- Time -->
+  <div class="col-md-4">
+    <label>Time</label>
+    <input
+      type="time"
+      class="form-control"
+      name="time"
+      [(ngModel)]="attendance.time"
+      required>
+  </div>
+
+</div>
+      
 
       
       <div class="mt-4">

@@ -75,8 +75,9 @@ const routes: Routes = [
     component: EditStudentComponent
    },
    
-   {path : 'take-attendance',
-    component: TakeAttendanceComponent
+   {
+    path: 'take-attendance',
+    component:TakeAttendanceComponent
    }
 
 ];
