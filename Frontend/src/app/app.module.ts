@@ -24,7 +24,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FacultyMenuComponent } from './components/faculty-menu/faculty-menu.component';
 import { HidePasswordPipe } from './pipes/hide-password.pipe';
-
+import { ViewAttendanceComponent } from './components/view-attendance/view-attendance.component';
+import { ViewAllAttendanceComponent } from './components/view-all-attendance/view-all-attendance.component';
 @NgModule({
   declarations: [
 
@@ -45,10 +46,11 @@ import { HidePasswordPipe } from './pipes/hide-password.pipe';
         AllStudentsComponent,
         EditStudentComponent,
         TakeAttendanceComponent,
-     
+        ViewAttendanceComponent,
         AllUserComponent,
         FacultyMenuComponent,
-        HidePasswordPipe
+        HidePasswordPipe,
+        ViewAllAttendanceComponent
   ],
   imports: [
     BrowserModule,

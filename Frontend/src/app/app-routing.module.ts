@@ -15,6 +15,8 @@ import { AddStudentComponent } from './components/add-student/add-student.compon
 import { AllStudentsComponent } from './components/all-students/all-students.component';
 import { EditStudentComponent } from './components/edit-student/edit-student.component';
 import { TakeAttendanceComponent } from './components/take-attendance/take-attendance.component';
+import { ViewAttendanceComponent } from './components/view-attendance/view-attendance.component';
+import { ViewAllAttendanceComponent } from './components/view-all-attendance/view-all-attendance.component';
 
 
 const routes: Routes = [
@@ -78,6 +80,13 @@ const routes: Routes = [
    {
     path: 'take-attendance',
     component:TakeAttendanceComponent
+   },
+   { path: 'view-attendance',
+    component: ViewAttendanceComponent
+   },
+   {
+    path: 'view-all-attendance',
+    component: ViewAllAttendanceComponent
    }
 
 ];

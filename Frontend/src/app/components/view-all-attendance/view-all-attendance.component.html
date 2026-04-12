@@ -1,106 +1,128 @@
 <app-admin-menu></app-admin-menu>
+
 <div class="page-wrapper">
-  <div class="attendance-card">
-    <h1 class="title">Attendance Viewer</h1>
+  <div class="container">
 
-    <!-- Top section: filters + buttons -->
-    <div class="top-bar">
-      <div class="filters">
-        <!-- Faculty dropdown -->
-        <div class="form-field">
-          <label for="faculty">Faculty</label>
-          <select
-            id="faculty"
-            [(ngModel)]="selectedFaculty"
-            class="input"
-          >
-            <option value="" disabled selected>Select faculty</option>
-            <option *ngFor="let faculty of facultyList" [value]="faculty">
-              {{ faculty.firstName +" "+ faculty.lastName }}
-            </option>
-          </select>
-        </div>
+    <h2>View All Attendance</h2>
 
-        <!-- Subject dropdown -->
-        <div class="form-field">
-          <label for="subject">Subject</label>
-          <select
-            id="subject"
-            [(ngModel)]="selectedSubject"
-            class="input"
-          >
-            <option value="" disabled selected>Select subject</option>
-            <option *ngFor="let subject of subjectList" [ngValue]="subject">
-              {{ subject.name }}
-            </option>
-          </select>
-        </div>
+    <!-- FILTER FORM -->
+    <form>
 
-        <!-- Date picker -->
-        <div class="form-field">
-          <label for="date">Date</label>
+      <div class="row">
+
+        <!-- Faculty -->
+<select class="form-control" [(ngModel)]="selectedFaculty" name="faculty">
+  <option [value]="0">All Faculties</option>
+  <option *ngFor="let f of facultyList" [value]="f.id">
+    {{f.username}}
+  </option>
+</select>
+
+<select class="form-control" [(ngModel)]="selectedSubject" name="subject">
+  <option [ngValue]="0">All Subjects</option>
+  <option *ngFor="let s of subjectList" [ngValue]="s.id">
+    {{s.name}}
+  </option>
+</select>
+        <!-- Date -->
+        <div class="col-md-4">
+          <label>Select Date</label>
           <input
-            id="date"
             type="date"
+            class="form-control"
             [(ngModel)]="selectedDate"
-            class="input"
-          />
+            name="date">
         </div>
+
       </div>
 
-      <!-- Right-side buttons -->
-      <div class="actions">
-        <button class="btn primary" (click)="show()">Show</button>
-        <button class="btn outline" (click)="showAll()">Show All</button>
-      </div>
-    </div>
+      <!-- Buttons -->
+      <div class="row mt-3">
 
-    <!-- Attendance table -->
-    <div class="table-wrapper">
-      <table class="attendance-table">
+        <div class="col-md-6">
+          <button type="button" class="btn btn-secondary w-100" (click)="showAll()">
+            Show All
+          </button>
+        </div>
+
+        <div class="col-md-6">
+          <button type="button" class="btn btn-primary w-100" (click)="show()">
+            Show
+          </button>
+        </div>
+
+      </div>
+
+    </form>
+
+    <!-- TABLE -->
+    <div class="mt-4" *ngIf="attendanceList.length > 0">
+
+      <h4>Attendance Records</h4>
+
+      <table class="table table-bordered">
         <thead>
           <tr>
-            <th>#</th>
+            <th>Sr No</th>
             <th>Faculty</th>
             <th>Subject</th>
             <th>Date</th>
             <th>Time</th>
-            <th>Students</th>
+            <th>No. of Students</th>
+            <th>Show Students</th>
           </tr>
         </thead>
+
         <tbody>
-          <tr *ngFor="let row of attendanceList; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>{{ row.faculty }}</td>
-            <td>{{ row.subject }}</td>
-            <td>{{ row.date | date: 'dd-MM-yyyy' }}</td>
-            <td>{{ row.time }}</td>
+          <tr *ngFor="let record of attendanceList; let i = index">
+
+            <td>{{i + 1}}</td>
+            <td>{{record.user?.username}}</td>
+            <td>{{record.subject?.name}}</td>
+            <td>{{record.date}}</td>
+            <td>{{record.time}}</td>
+            <td>{{record.students?.length}}</td>
+
             <td>
-              <button
-                class="btn small"
-                (click)="row.showStudents = !row.showStudents"
-              >
-                {{ row.showStudents ? 'Hide' : 'Show' }}
+              <button class="btn btn-info btn-sm"
+                      (click)="showStudents(record.students)">
+                View
               </button>
-
-              <!-- Student names shown after clicking -->
-              <div
-                class="student-list"
-                *ngIf="row.showStudents"
-              >
-                <span *ngFor="let st of row.students; let j = index">
-                  {{ j + 1 }}. {{ st }}<br />
-                </span>
-              </div>
             </td>
-          </tr>
 
-          <!-- Optional: message if no data -->
-          <tr *ngIf="attendanceList?.length === 0">
-            <td colspan="6" class="no-data">No attendance records found.</td>
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <!-- STUDENT LIST -->
+    <div *ngIf="selectedStudents.length > 0" class="student-box">
+
+      <h5>Student List ({{selectedStudents.length}})</h5>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Sr No</th>
+            <th>Student Name</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let s of selectedStudents; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{s.name}}</td>
           </tr>
         </tbody>
       </table>
+
+      <button class="btn btn-danger btn-sm" (click)="closeStudents()">
+        Close
+      </button>
+
     </div>
+
   </div>
 </div>

@@ -1,1 +1,120 @@
-<app-admin-menu></app-admin-menu>
+<app-faculty-menu></app-faculty-menu>
+
+<div class="page-wrapper">
+  <div class="container">
+
+    <h2>View Attendance</h2>
+
+    <form (ngSubmit)="getAttendance()">
+
+      <div class="row">
+
+        <!-- Subject -->
+        <div class="col-md-4">
+          <label>Select Subject</label>
+          <select
+            class="form-control"
+            name="subject"
+            [(ngModel)]="filter.subjectId"
+            required>
+
+            <option value="">Select Subject</option>
+            <option *ngFor="let sub of subjects" [value]="sub.id">
+              {{sub.name}}
+            </option>
+
+          </select>
+        </div>
+
+        <!-- Date -->
+        <div class="col-md-4">
+          <label>Date</label>
+          <input
+            type="date"
+            class="form-control"
+            name="date"
+            [(ngModel)]="filter.date"
+            required>
+        </div>
+
+        <!-- Button -->
+        <div class="col-md-4 d-flex align-items-end">
+          <button class="btn btn-primary w-100" type="submit">
+            View Attendance
+          </button>
+        </div>
+
+      </div>
+
+    </form>
+
+    <!-- Lecture-wise Attendance Table -->
+    <div class="mt-4" *ngIf="attendanceRecords.length > 0">
+
+      <h4>Attendance Records</h4>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Sr No</th>
+            <th>Faculty</th>
+            <th>Subject</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>No. of Students</th>
+            <th>Show Students</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let record of attendanceRecords; let i = index">
+
+            <td>{{i + 1}}</td>
+            <td>{{record.user?.username || 'N/A'}}</td>
+            <td>{{record.subject?.name}}</td>
+            <td>{{record.date}}</td>
+            <td>{{record.time}}</td>
+            <td>{{record.students?.length}}</td>
+
+            <td>
+              <button class="btn btn-info btn-sm"
+                      (click)="showStudents(record.students)">
+                View
+              </button>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <!-- Student Table -->
+    <div *ngIf="selectedStudents.length > 0" class="student-box">
+
+     <h5>Student List</h5>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Sr No</th>
+            <th>Student Name</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let s of selectedStudents; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{s.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button class="btn btn-danger btn-sm" (click)="closeStudents()">
+        Close
+      </button>
+
+    </div>
+
+  </div>
+</div>

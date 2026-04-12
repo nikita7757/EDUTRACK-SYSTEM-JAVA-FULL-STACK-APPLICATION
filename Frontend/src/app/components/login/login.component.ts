@@ -30,35 +30,35 @@ export class LoginComponent implements OnInit {
 
   login() {
 
-    console.log("Login attempt:", this.user);
+  console.log("Login attempt:", this.user);
 
-    this.userservice.login(this.user).subscribe((res:any)=>{
+  this.userservice.login(this.user).subscribe((res:any)=>{
 
-      console.log("Response from backend:", res);
+    // ✅ THIS is the correct place
+    console.log("FULL RESPONSE:", res);
 
-      if(res != null){
+    if(res != null){
 
-        // store login state
-        localStorage.setItem('isLoggedIn','true');
+      localStorage.setItem('isLoggedIn','true');
 
-        if(res.role && res.role.toLowerCase() === 'admin'){
-          this.router.navigateByUrl('/admin-dashboard');
-        } 
-        else {
-          this.router.navigateByUrl('/faculty-dashboard');
-                                   
-        }
+      // ✅ TEMP FIX (important)
+      localStorage.setItem("username", this.user.username);
 
+      console.log("Stored username:", localStorage.getItem("username"));
+
+      const role = res.role || res.data?.role;
+
+      if(role && role.toLowerCase() === 'admin'){
+        this.router.navigateByUrl('/admin-dashboard');
       } 
       else {
-        alert("Invalid username or password");
+        this.router.navigateByUrl('/faculty-dashboard');
       }
 
-    }, (error)=>{
-      console.error("Login error:", error);
-      alert("Something went wrong while logging in");
-    });
+    }
 
-  }
+  });
+
+}
 
 }

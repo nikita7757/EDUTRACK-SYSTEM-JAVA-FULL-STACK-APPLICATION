@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AttendenceService } from 'src/app/services/attendance.service';
+import { AttendanceService } from 'src/app/services/attendance.service';
 import { StudentService } from 'src/app/services/student.service';
 import { SubjectService } from 'src/app/services/subject.service';
 
@@ -22,7 +22,8 @@ export class TakeAttendanceComponent implements OnInit {
   constructor(
     private studentService: StudentService,
     private subjectService: SubjectService,
-    private attendenceService: AttendenceService
+    private attendanceService : AttendanceService
+    
   ){}
 
   ngOnInit(): void {
@@ -46,18 +47,27 @@ export class TakeAttendanceComponent implements OnInit {
 
   submitAttendance(){
 
-    const attendanceData = this.students.map(student => ({
-      studentId: student.id,
-      subjectId: this.attendance.subjectId,
-      date: this.attendance.date,
-      time: this.attendance.time,
-      present: student.present || false
-    }));
+  const selectedStudents = this.students
+    .filter(student => student.present)
+    .map(student => student.id);
 
-    this.attendenceService.saveAttendance(attendanceData).subscribe(()=>{
-      alert("Attendance submitted successfully");
-    });
+  const username = localStorage.getItem("username"); // ✅ logged-in faculty
 
-  }
+  const request = {
+    username: username,
+    subjectId: this.attendance.subjectId,
+    date: this.attendance.date,
+    time: this.attendance.time,
+    studentIds: selectedStudents
+  };
+
+  console.log("Sending request:", request); // debug
+
+  this.attendanceService.saveAttendance(request).subscribe(()=>{
+    alert("Attendance submitted successfully");
+  });
+
+}
+
 
 }

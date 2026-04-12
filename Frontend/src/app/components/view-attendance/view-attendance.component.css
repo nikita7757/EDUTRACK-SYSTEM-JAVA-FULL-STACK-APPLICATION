@@ -1,0 +1,117 @@
+/* Page background */
+.page-wrapper{
+  min-height: 100vh;
+  background: #f4f6f9;
+  padding-top: 40px;
+}
+
+/* Main container (box) */
+.container{
+  max-width: 900px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* Heading */
+h2{
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Labels */
+label{
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+/* Inputs */
+.form-control{
+  border-radius: 6px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+}
+
+/* Input focus */
+.form-control:focus{
+  border-color: #007bff;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Button */
+button{
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  color: white;
+}
+
+/* Table */
+table{
+  margin-top: 15px;
+}
+
+/* Table header */
+table th{
+  background-color: #f1f3f5;
+  color: black;
+  text-align: center;
+}
+
+/* Table rows */
+table td{
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Row hover */
+table tbody tr:hover{
+  background-color: #f1f1f1;
+}
+
+/* View button */
+.btn-info{
+  background-color: #0d6efd;
+  border: none;
+}
+
+.btn-info:hover{
+  background-color: #1259c4;
+  color: white;
+}
+
+/* Student popup box */
+.student-box{
+  margin-top: 20px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Student box heading */
+.student-box h5{
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: rgb(217, 216, 216);
+}
+
+/* Student table styling */
+.student-box table th{
+  background-color: #007bff;
+  color: white;
+}
+
+/* Close button */
+.student-box .btn-danger{
+  margin-top: 10px;
+}
+
+/* Responsive spacing */
+.row{
+  margin-bottom: 10px;
+}
